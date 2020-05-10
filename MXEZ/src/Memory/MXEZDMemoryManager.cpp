@@ -11,6 +11,8 @@ namespace MXEZ
 	MXEZDMemoryManager::MXEZDMemoryManager(size_t objectSize) : _objectSize(objectSize)
 	{
 		std::cout << "MXEZDMemoryManager Created" << std::endl; // TMP
+
+		_blocks.clear();
 		// After many test thoses values seems to be a good average of uses
 		Reset(16, 16);
 	}
@@ -58,7 +60,6 @@ namespace MXEZ
 
 		// Release Object in this block
 		_blocks.at(index)->Release(object);
-
 
 		// Then Check if block is not first && the last && empty and remove it 
 		while (_blocks.at(index)->IsEmpty() && index != 0 && index == (_blocks.size() - 1)) {
@@ -117,12 +118,11 @@ namespace MXEZ
 		if (_memory == NULL) {
 			throw "MXEZDMemoryManager::Block Cannot allocate more memory";
 		}
-		// memset(_memory, 0, _blockSize);
+		memset(_memory, 0, _blockSize);
 		// std::cout << "MXEZDMemoryManager::Block() Start at (" << _memory << ") End stop at (" << (void*)&((char*)_memory)[_blockSize] << ")" << std::endl;
 		// std::cout << "MXEZDMemoryManager::Block() Constructor memPartSize (" << memPartSize << ")" << std::endl; // TMP
 
 		char* ptrMemoryChar = (char*)_memory;
-
 		MXEZ_DMEMORYMANAGER_BLOCK_INDEX_TYPE* ptr;
 
 		// Init Memory with object preceed by the block index (0, 1, 2, ...)
