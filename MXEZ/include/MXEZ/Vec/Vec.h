@@ -33,11 +33,6 @@ namespace MXEZ
 			return (ss.str());
 		}
 
-		Vec2T<T>	operator-() const
-		{
-			return Vec2T<T>(-x, -y);
-		}
-
 		Vec2T<T>& operator-=(const Vec2T<T>& other)
 		{
 			x -= other.x;
@@ -141,6 +136,9 @@ namespace MXEZ
 	// Int
 	template struct Vec2T<int>;
 	typedef Vec2T<int> Vec2i;
+	// Unsigned Int
+	template struct Vec2T<unsigned int>;
+	typedef Vec2T<unsigned int> Vec2ui;
 
 	// UInt8
 	template struct Vec2T<uint8_t>;
