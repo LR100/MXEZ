@@ -1,0 +1,9 @@
+
+*.db
+.vs/MXEZ/v16/.suo
+*.ipch
+*.obj
+*.log
+*.pdb
+*.idb
+*.tlog
