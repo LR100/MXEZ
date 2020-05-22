@@ -81,6 +81,11 @@ namespace MXEZ
 			return (x == other.x && y == other.y);
 		}
 
+		bool		operator!=(const Vec2T<T>& other) const
+		{
+			return (x != other.x && y != other.y);
+		}
+
 		Vec2T<T>	operator-(const Vec2T& other) const
 		{
 			return Vec2T<T>(x - other.x, y - other.y);
@@ -211,6 +216,11 @@ namespace MXEZ
 		bool		operator==(const Vec3T<T>& other) const
 		{
 			return (x == other.x && y == other.y && z == other.z);
+		}
+
+		bool		operator!=(const Vec3T<T>& other) const
+		{
+			return (x != other.x && y != other.y && z != other.z);
 		}
 
 		Vec3T<T>	operator-(const Vec3T& other) const
